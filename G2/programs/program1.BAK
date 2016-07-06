@@ -24,7 +24,7 @@ DEFINE CLASS sociodata as Custom
 		OPEN DATABASE c:\fox\g2\data\biblioteca
 		INSERT INTO socio(nombre,apellido,email,domicilio,telefono) ;
 			values(oSoc.nombre,oSoc.apellido,oSoc.email,oSoc.domicilio,oSoc.telefono)
-		RETURN .t.
+		RETURN socio.id_socio
 	ENDFUNC
 	
 ENDDEFINE

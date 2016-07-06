@@ -1,0 +1,8 @@
+DEFINE CLASS socio as Custom
+	idSocio=.f.
+	nombre=.f.
+	apellido=.f.
+	email=.f.
+	domicilio=.f.
+	telefono=.f.
+ENDDEFINE
