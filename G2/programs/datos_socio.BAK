@@ -32,17 +32,16 @@ DEFINE CLASS datos_socio AS datos_base OF programs\datos_base.prg
 	ENDFUNC
 	
 	FUNCTION getSocio
-		PARAMETERS id
+		PARAMETERS idsocio
 		this.conectar()
-		SELECT * FROM socio WHERE id_socio=id
+		SELECT * FROM socio WHERE id_socio=idsocio
 		oSoc=NEWOBJECT("socio","c:\fox\g2\clases\clasesprestamolibros.vcx")
-		oSoc.idsocio=id_socio
+		oSoc.idsocio=idsocio
 		oSoc.nombre=nombre
 		oSoc.apellido=apellido
 		oSoc.telefono=telefono
 		oSoc.email=email
+		this.desconectar()
 		RETURN oSoc
-	ENDFUNC 
-	
-	
+	ENDFUNC 	
 ENDDEFINE

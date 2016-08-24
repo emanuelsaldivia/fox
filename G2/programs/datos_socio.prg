@@ -41,8 +41,8 @@ DEFINE CLASS datos_socio AS datos_base OF programs\datos_base.prg
 		oSoc.apellido=apellido
 		oSoc.telefono=telefono
 		oSoc.email=email
+		oSoc.domicilio=domicilio
+		this.desconectar()
 		RETURN oSoc
-	ENDFUNC 
-	
-	
+	ENDFUNC 	
 ENDDEFINE
