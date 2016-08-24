@@ -24,17 +24,23 @@ DEFINE CLASS datos_socio AS datos_base OF programs\datos_base.prg
 		PARAMETERS idsocio
 		this.conectar()
 		DELETE FROM socio WHERE id_socio=(idsocio)
+		use socio
+		select socio 
+		set exclusive on 
+		pack 
+		set exclusive off 
 		if(_TALLY>0)
 			RETURN .t.
 		ELSE
 			RETURN .f.
 		ENDIF
+		this.desconectar()
 	ENDFUNC
 	
 	FUNCTION getSocio
 		PARAMETERS idsocio
 		this.conectar()
-		SELECT * FROM socio WHERE id_socio=idsocio
+		SELECT * FROM socio WHERE id_socio=(idsocio)
 		oSoc=NEWOBJECT("socio","c:\fox\g2\clases\clasesprestamolibros.vcx")
 		oSoc.idsocio=idsocio
 		oSoc.nombre=nombre
