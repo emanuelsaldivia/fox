@@ -54,5 +54,11 @@ DEFINE CLASS datos_socio AS datos_base OF programs\datos_base.prg
 			this.desconectar()
 			RETURN NULL
 		ENDIF 
-	ENDFUNC 	
+	ENDFUNC 
+	
+	FUNCTION getAllSocios
+		this.conectar()
+		SELECT * FROM socio INTO DBF dbfSocios
+		this.desconectar()
+	ENDFUNC 		
 ENDDEFINE

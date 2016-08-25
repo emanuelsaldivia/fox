@@ -26,7 +26,7 @@ DEFINE CLASS datos_socio AS datos_base OF programs\datos_base.prg
 		this.conectar()
 		DELETE FROM socio WHERE id_socio=(idsocio)
 		CLOSE TABLES
-		PACK
+		PACK socio
 		set exclusive off 
 		if(_TALLY>0)
 			RETURN .t.
@@ -54,5 +54,17 @@ DEFINE CLASS datos_socio AS datos_base OF programs\datos_base.prg
 			this.desconectar()
 			RETURN NULL
 		ENDIF 
-	ENDFUNC 	
+	ENDFUNC 
+	
+	FUNCTION getAllSocios
+		this.conectar()
+		SELECT * FROM socio INTO DBF dbfSocios
+		IF(_TALLY>0) THEN
+		this.desconectar()
+		RETURN dbfSocios
+		ELSE
+			this.desconectar()
+			RETURN NULL
+		ENDIF
+	ENDFUNC 		
 ENDDEFINE

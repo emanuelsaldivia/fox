@@ -41,5 +41,11 @@ DEFINE CLASS negocio_socio AS Custom
 		ds = NEWOBJECT("datos_socio","programs\datos_socio.prg")
 		RETURN ds.getSocio(idsocio)
 	ENDFUNC 
+	
+	FUNCTION getAllSocios
+		ds = NEWOBJECT("datos_socio","programs\datos_socio.prg")
+		RETURN ds.getAllSocios()
+	ENDFUNC 
+	
 		
 ENDDEFINE
