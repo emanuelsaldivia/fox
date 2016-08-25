@@ -8,10 +8,22 @@ DEFINE CLASS negocio_socio AS Custom
 	ENDFUNC
 
 	FUNCTION updateSocio
-	PARAMETERS oSoc
-		ds = NEWOBJECT("datos_socio","clases\clasesprestamolibros.vcx")
-		RETURN ds.updateSocio(oSoc)
+	PARAMETERS idSocio,nombre,apellido,telefono,email,domicilio
+		ds = NEWOBJECT("datos_socio","programs\datos_socio.prg")
+		socio = ds.getSocio(idSocio)
+		IF !ISNULL(socio) THEN 
+			socio.idSocio = idSocio
+			socio.Nombre=nombre
+			socio.Apellido=apellido
+			socio.Email=email
+			socio.Domicilio=domicilio
+			socio.Telefono=telefono
+			RETURN ds.updateSocio(socio)
+		ELSE 
+			RETURN .F.
+		ENDIF
 	ENDFUNC	
+
 	
 	FUNCTION deleteSocio
 		PARAMETERS idsocio

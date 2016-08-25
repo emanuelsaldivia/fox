@@ -40,15 +40,20 @@ DEFINE CLASS datos_socio AS datos_base OF programs\datos_base.prg
 	FUNCTION getSocio
 		PARAMETERS idsocio
 		this.conectar()
-		SELECT * FROM socio WHERE id_socio=(idsocio)
-		oSoc=NEWOBJECT("socio","c:\fox\g2\clases\clasesprestamolibros.vcx")
-		oSoc.idsocio=idsocio
-		oSoc.nombre=nombre
-		oSoc.apellido=apellido
-		oSoc.telefono=telefono
-		oSoc.email=email
-		oSoc.domicilio=domicilio
-		this.desconectar()
+		SELECT * FROM socio WHERE id_socio=idsocio
+		IF(_TALLY>0) THEN
+			oSoc= NEWOBJECT("socio","programs\socio.prg")
+			oSoc.idsocio=idsocio
+			oSoc.nombre=nombre
+			oSoc.apellido=apellido
+			oSoc.telefono=telefono
+			oSoc.email=email
+			oSoc.domicilio=domicilio
+			this.desconectar()
 		RETURN oSoc
+		ELSE
+			this.desconectar()
+			RETURN NULL
+		ENDIF 
 	ENDFUNC 	
 ENDDEFINE
