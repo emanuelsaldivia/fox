@@ -27,13 +27,13 @@ DEFINE CLASS negocio_socio AS Custom
 	
 	FUNCTION deleteSocio
 		PARAMETERS idsocio
-		ds = NEWOBJECT("datos_socio","clases\clasesprestamolibros.vcx")
-		*socio = ds.getSocio(idSocio)
-		*IF socio != null THEN 
+		ds = NEWOBJECT("datos_socio","programs\datos_socio.prg")
+		socio = ds.getSocio(idSocio)
+		IF ISNULL(socio) THEN 
+		RETURN .F.
+		ELSE
 		RETURN ds.deleteSocio(idsocio)
-		*ELSE
-		*RETURN .F.
-		*ENDIF
+		ENDIF
 	ENDFUNC
 	
 	FUNCTION getSocio

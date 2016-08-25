@@ -22,12 +22,11 @@ DEFINE CLASS datos_socio AS datos_base OF programs\datos_base.prg
 	
 	FUNCTION deleteSocio
 		PARAMETERS idsocio
+		set exclusive on
 		this.conectar()
 		DELETE FROM socio WHERE id_socio=(idsocio)
-		use socio
-		select socio 
-		set exclusive on 
-		pack 
+		CLOSE TABLES
+		PACK socio
 		set exclusive off 
 		if(_TALLY>0)
 			RETURN .t.
