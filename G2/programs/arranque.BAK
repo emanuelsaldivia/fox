@@ -1,2 +1,2 @@
-SET PATH TO E:\Alumnos\G5\fox-master\G2
+SET PATH TO C:\fox\G2
 DO menu

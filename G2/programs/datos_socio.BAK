@@ -11,7 +11,7 @@ DEFINE CLASS datos_socio AS datos_base OF programs\datos_base.prg
 	FUNCTION updateSocio
 	PARAMETERS oSoc
 		this.conectar()
-		UPDATE socio SET apellido=(oSoc.apellido), nombre=(oSoc.nombre), domicilio=(oSoc.apellido), email=(oSoc.email), ;
+		UPDATE socio SET apellido=(oSoc.apellido), nombre=(oSoc.nombre), domicilio=(oSoc.domicilio), email=(oSoc.email), ;
 			telefono=(oSoc.telefono) WHERE id_socio=(oSoc.idsocio)
 		IF(_TALLY>0)
 			RETURN .T.
@@ -35,12 +35,13 @@ DEFINE CLASS datos_socio AS datos_base OF programs\datos_base.prg
 		PARAMETERS idsocio
 		this.conectar()
 		SELECT * FROM socio WHERE id_socio=idsocio
-		oSoc=NEWOBJECT("socio","c:\fox\g2\clases\clasesprestamolibros.vcx")
+		oSoc= NEWOBJECT("socio","programs\socio.prg")
 		oSoc.idsocio=idsocio
 		oSoc.nombre=nombre
 		oSoc.apellido=apellido
 		oSoc.telefono=telefono
 		oSoc.email=email
+		oSoc.domicilio=domicilio
 		this.desconectar()
 		RETURN oSoc
 	ENDFUNC 	
