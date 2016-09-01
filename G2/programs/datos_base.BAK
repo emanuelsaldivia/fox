@@ -2,7 +2,7 @@ DEFINE CLASS datos_base as Custom
 
 	PROTECTED isconnected, dbname
 	isconnected = .f.
-	dbname = "datos\biblioteca.dbc"
+	dbname = "data\biblioteca.dbc"
 	
 	FUNCTION conectar()
 		IF NOT this.isconnected THEN

@@ -39,7 +39,7 @@ DEFINE CLASS datos_socio AS datos_base OF programs\datos_base.prg
 	FUNCTION getSocio
 		PARAMETERS idsocio
 		this.conectar()
-		SELECT * FROM socio WHERE id_socio=idsocio
+		SELECT * FROM socio WHERE id_socio=idsocio INTO CURSOR cursorGetSocio		
 		IF(_TALLY>0) THEN
 			oSoc= NEWOBJECT("socio","programs\socio.prg")
 			oSoc.idsocio=idsocio

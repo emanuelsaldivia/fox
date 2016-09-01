@@ -59,12 +59,6 @@ DEFINE CLASS datos_socio AS datos_base OF programs\datos_base.prg
 	FUNCTION getAllSocios
 		this.conectar()
 		SELECT * FROM socio INTO DBF dbfSocios
-		IF(_TALLY>0) THEN
 		this.desconectar()
-		RETURN dbfSocios
-		ELSE
-			this.desconectar()
-			RETURN NULL
-		ENDIF
 	ENDFUNC 		
 ENDDEFINE

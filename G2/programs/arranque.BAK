@@ -1,2 +1,2 @@
 SET PATH TO C:\fox\G2
-DO menu
+DO menu\menu.mpr WITH THIS,.T.
